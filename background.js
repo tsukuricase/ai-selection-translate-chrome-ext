@@ -1,22 +1,22 @@
 console.log("Service Worker started");
 
-chrome.runtime.onMessage.addListener((msg, sender, resp) => {
-  console.log("background", "收到消息", msg, sender);
-  if (message.action === "ai_translate") {
-    console.log(
-      "[debug] 收到 ai_translate, key=",
-      message.apiKey,
-      "type=",
-      message.apiType,
-      "text=",
-      message.text
-    );
-    fetchAIResult(message.text, message.apiKey, message.apiType)
-      .then((result) => sendResponse({ result }))
-      .catch((e) => sendResponse({ error: String(e) }));
-    return true; // 异步
-  }
-});
+// chrome.runtime.onMessage.addListener((message, sender, resp) => {
+//   console.log("background", "收到消息", message, sender);
+//   if (message.action === "ai_translate") {
+//     console.log(
+//       "[debug] 收到 ai_translate, key=",
+//       message.apiKey,
+//       "type=",
+//       message.apiType,
+//       "text=",
+//       message.text
+//     );
+//     fetchAIResult(message.text, message.apiKey, message.apiType)
+//       .then((result) => sendResponse({ result }))
+//       .catch((e) => sendResponse({ error: String(e) }));
+//     return true; // 异步
+//   }
+// });
 
 // 带超时的fetch，防止接口长时间无响应
 async function fetchWithTimeout(resource, options = {}) {
@@ -47,7 +47,8 @@ async function fetchAIResult(text, apiKey, apiType) {
       messages: [
         {
           role: "system",
-          content: 'You are a professional English-to-Japanese translator.Translate the following English sentence into Japanese.Please respond with all of the following:1. The sentence in Japanese (kanji/kana).2. The sentence in hiragana.3. The sentence in katakana.4. The sentence in romaji (Latin alphabet).5. A brief grammatical analysis of the sentence (in English).Format your reply clearly, only in English.Example:Japanese: これはペンです。Hiragana: これはぺんです。Katakana: コレハペンデス。Romaji: Kore wa pen desu.Grammar analysis: "Kore" means "this"; "wa" is the topic particle; "pen" means "pen"; "desu" is the copula.',
+          content:
+            'You are a professional English-to-Japanese translator.Translate the following English sentence into Japanese.Please respond with all of the following:1. The sentence in Japanese (kanji/kana).2. The sentence in hiragana.3. The sentence in katakana.4. The sentence in romaji (Latin alphabet).5. A brief grammatical analysis of the sentence (in English).Format your reply clearly, only in English.Example:Japanese: これはペンです。Hiragana: これはぺんです。Katakana: コレハペンデス。Romaji: Kore wa pen desu.Grammar analysis: "Kore" means "this"; "wa" is the topic particle; "pen" means "pen"; "desu" is the copula.',
         },
         { role: "user", content: text },
       ],
@@ -120,6 +121,17 @@ async function fetchAIResult(text, apiKey, apiType) {
 }
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  console.log("background", "收到消息", message, sender);
+  if (message.action === "ai_translate") {
+    console.log(
+      "[debug] 收到 ai_translate, key=",
+      message.apiKey,
+      "type=",
+      message.apiType,
+      "text=",
+      message.text
+    );
+  }
   if (message.action === "ai_translate") {
     fetchAIResult(message.text, message.apiKey, message.apiType)
       .then((result) => sendResponse({ result }))

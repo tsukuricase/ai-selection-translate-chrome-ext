@@ -33,7 +33,7 @@ function showPopover(x, y, text) {
   popover = document.createElement("div");
   popover.id = "ai-translate-popover";
   popover.style.cssText = `
-    position: absolute; left: ${x}px; top: ${y}px; z-index: 2147483647; background: #fff; border:1px solid #888;
+    position: absolute; left: ${x}px; top: ${y}px; z-index: 2147483647; background: #fff; color: #222; border:1px solid #888;
     padding:8px 14px; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.18); max-width:320px; font-size:15px;
     line-height:1.6; word-break:break-word;
   `;
