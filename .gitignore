@@ -1,0 +1,46 @@
+# Node modules (如果你用 npm/yarn 管理前端依赖)
+node_modules/
+npm-debug.log*
+yarn-error.log
+
+# 打包/编译产物（如用打包器，如 dist、build 等文件夹）
+dist/
+build/
+
+# VS Code 编辑器等常见IDE相关缓存
+.vscode/
+.idea/
+
+# Mac、Windows系统自动文件
+.DS_Store
+Thumbs.db
+
+# 输出的 icons 设计源文件临时产物（svg/psd/ai/xd等，若不需同步至git可加，无则不用）
+*.psd
+*.ai
+*.xd
+*.sketch
+*.bak
+
+# 环境/配置密钥文件（如果你有保存本地密钥或开发配置的需求）
+.env
+*.env.local
+
+# Chrome 扩展本地自动生成的 log、cache 等
+*.log
+
+# 你个人本地的调试存档
+*.swp
+*.swo
+
+# 测试报告、覆盖率等（如有用测试工具）
+coverage/
+*.lcov
+
+# 文档编译中间态
+doc/temp/
+docs/.vuepress/dist/
+
+# 其它不需要纳入 git 的临时/临时图片等
+tmp/
+temp/

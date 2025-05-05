@@ -1,0 +1,43 @@
+{
+    "manifest_version": 3,
+    "name": "AI 划词翻译器",
+    "version": "1.0.0",
+    "description": "基于大模型（OpenRouter/DeepSeek/Qwen）AI划词翻译插件。",
+    "permissions": [
+      "activeTab",
+      "storage",
+      "scripting"
+    ],
+    "host_permissions": [
+      "https://openrouter.ai/*",
+      "https://api.deepseek.com/*",
+      "https://dashscope.aliyuncs.com/*"
+    ],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "content_scripts": [
+      {
+        "matches": ["https://github.com"],
+        "js": ["content.js"],
+        "run_at": "document_idle",
+        "css": ["styles/popup.css"]
+      }
+    ],
+    "options_page": "options.html",
+    "action": {
+      "default_title": "AI 划词翻译器",
+      "default_icon": {
+        "16": "icons/icon16.png",
+        "48": "icons/icon48.png",
+        "128": "icons/icon128.png"
+      },
+      "default_popup": "options.html"
+    },
+    "icons": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  }
+  

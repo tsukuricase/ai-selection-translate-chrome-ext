@@ -1,0 +1,71 @@
+/* styles/popup.css */
+
+#ai-translate-popover {
+    position: absolute;
+    z-index: 2147483647;
+    background: #fff;
+    border: 1px solid #888;
+    padding: 10px 16px 10px 12px;
+    border-radius: 9px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+    max-width: 340px;
+    font-size: 15px;
+    font-family: system-ui, sans-serif;
+    line-height: 1.65;
+    color: #24292f;
+    word-break: break-word;
+    transition: box-shadow 0.2s, opacity 0.22s;
+    opacity: 0.98;
+    user-select: text;
+}
+
+#ai-translate-popover span {
+    display: inline-block;
+    /* 让长内容换行展示，并可全选 */
+    max-width: 300px;
+    word-break: break-all;
+}
+
+#ai-translate-popover #closePopover {
+    float: right;
+    margin-left: 12px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 18px;
+    color: #999;
+    transition: color 0.2s;
+    padding: 0;
+}
+
+#ai-translate-popover #closePopover:hover {
+    color: #cf222e;
+    background: #eee;
+}
+
+#ai-translate-popover.loading span {
+    color: #7bb;
+    font-style: italic;
+}
+
+#ai-translate-popover.error span {
+    color: #cf222e;
+}
+
+@media (prefers-color-scheme: dark) {
+    #ai-translate-popover {
+        background: #222;
+        color: #eee;
+        border-color: #444;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.32);
+    }
+
+    #ai-translate-popover #closePopover {
+        color: #aaa;
+    }
+
+    #ai-translate-popover #closePopover:hover {
+        background: #343438;
+        color: #fa5353;
+    }
+}
