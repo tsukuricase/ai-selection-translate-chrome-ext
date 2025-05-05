@@ -10,16 +10,21 @@ function isInputOrEditable(el) {
 }
 
 document.addEventListener("mouseup", function (e) {
-    console.log("content", "mouseup事件触发", { selectedText, e });
-  if (isInputOrEditable(e.target)) return;
-  selectedText = window.getSelection().toString().trim();
-  if (selectedText.length > 0) {
-    showPopover(e.pageX, e.pageY, "正在翻译...");
-    chrome.storage.sync.get(["apiKey", "apiType"], (data) => {
-      translateWithAI(selectedText, data.apiKey, data.apiType);
-    });
-  } else {
-    removePopover();
+  console.log("content", "mouseup事件触发", { selectedText, e });
+  try {
+    if (isInputOrEditable(e.target)) return;
+    selectedText = window.getSelection().toString().trim();
+    if (selectedText.length > 0) {
+      showPopover(e.pageX, e.pageY, "正在翻译...");
+      chrome.storage.sync.get(["apiKey", "apiType"], (data) => {
+        translateWithAI(selectedText, data.apiKey, data.apiType);
+      });
+    } else {
+      removePopover();
+    }
+  } catch (error) {
+    console.error("content", "mouseup事件触发错误", error);
+    alert("插件失效，请刷新网页后重试");
   }
 });
 

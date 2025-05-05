@@ -47,8 +47,7 @@ async function fetchAIResult(text, apiKey, apiType) {
       messages: [
         {
           role: "system",
-          content:
-            "Translate sentences to Chinese in a fluent and accurate way.",
+          content: 'You are a professional English-to-Japanese translator.Translate the following English sentence into Japanese.Please respond with all of the following:1. The sentence in Japanese (kanji/kana).2. The sentence in hiragana.3. The sentence in katakana.4. The sentence in romaji (Latin alphabet).5. A brief grammatical analysis of the sentence (in English).Format your reply clearly, only in English.Example:Japanese: これはペンです。Hiragana: これはぺんです。Katakana: コレハペンデス。Romaji: Kore wa pen desu.Grammar analysis: "Kore" means "this"; "wa" is the topic particle; "pen" means "pen"; "desu" is the copula.',
         },
         { role: "user", content: text },
       ],
