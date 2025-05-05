@@ -1,7 +1,3 @@
-当然可以！以下是一份适合你项目结构的 `README.md` 模板。你可以根据实际API使用和项目细节补充或调整内容。
-
----
-
 # AI Selection Translate Chrome Extension
 
 基于现代大模型（OpenRouter/DeepSeek/Qwen）服务的浏览器划词AI翻译插件。  
