@@ -1,6 +1,6 @@
-import logger from "./logger.js";
+// import logger from "./logger.js";
 
-logger.debug("content", "内容脚本已注入", { url: location.href });
+console.log("content", "内容脚本已注入", { url: location.href });
 
 let selectedText = "";
 let popover = null;
@@ -10,7 +10,7 @@ function isInputOrEditable(el) {
 }
 
 document.addEventListener("mouseup", function (e) {
-  logger.info("content", "mouseup事件触发", { selectedText, e });
+    console.log("content", "mouseup事件触发", { selectedText, e });
   if (isInputOrEditable(e.target)) return;
   selectedText = window.getSelection().toString().trim();
   if (selectedText.length > 0) {

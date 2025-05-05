@@ -1,9 +1,21 @@
-import logger from "./logger.js";
-
-logger.info("background", "background.js 加载");
+console.log("Service Worker started");
 
 chrome.runtime.onMessage.addListener((msg, sender, resp) => {
-  logger.debug("background", "收到消息", msg, sender);
+  console.log("background", "收到消息", msg, sender);
+  if (message.action === "ai_translate") {
+    console.log(
+      "[debug] 收到 ai_translate, key=",
+      message.apiKey,
+      "type=",
+      message.apiType,
+      "text=",
+      message.text
+    );
+    fetchAIResult(message.text, message.apiKey, message.apiType)
+      .then((result) => sendResponse({ result }))
+      .catch((e) => sendResponse({ error: String(e) }));
+    return true; // 异步
+  }
 });
 
 // 带超时的fetch，防止接口长时间无响应

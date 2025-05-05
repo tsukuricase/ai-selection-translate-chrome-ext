@@ -1,6 +1,4 @@
 {
-    "aiLoggerEnv": "dev", 
-    "aiLoggerEnv:comment": "日志环境, dev / prod",
     "manifest_version": 3,
     "name": "AI 划词翻译器",
     "version": "1.0.0",
@@ -20,7 +18,7 @@
     },
     "content_scripts": [
       {
-        "matches": ["https://github.com"],
+        "matches": ["<all_urls>"],
         "js": ["content.js"],
         "run_at": "document_idle",
         "css": ["styles/popup.css"]

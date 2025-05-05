@@ -9,7 +9,7 @@ const LOG_LEVELS = {
 
 let LOG_ENV = "prod";
 try {
-  fetch(chrome.runtime.getURL("manifest.json"))
+  fetch(chrome.runtime.getURL("config.json"))
     .then((res) => res.json())
     .then((manifest) => {
       if (manifest.aiLoggerEnv) LOG_ENV = manifest.aiLoggerEnv;
